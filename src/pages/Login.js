@@ -16,6 +16,7 @@ export default class Login extends Component {
             type="password"
             name="password"
             id="password"
+            min="6"
             placeholder="Password"
             data-testid="password-input"
           />
