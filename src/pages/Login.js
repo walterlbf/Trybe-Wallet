@@ -12,7 +12,6 @@ export class Login extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange({ target }) {
@@ -20,18 +19,6 @@ export class Login extends Component {
     this.setState({
       [name]: value,
     });
-  }
-
-  handleSubmit(event) {
-    const { email, password } = this.state;
-    const minPasswordLength = 6;
-    const validation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (validation.test(email)
-      && (password.length >= minPasswordLength)) {
-      return event;
-    }
-    return event.preventDefault();
   }
 
   render() {
