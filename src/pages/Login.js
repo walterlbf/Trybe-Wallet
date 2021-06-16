@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { userLogin } from '../actions/index';
 
 export class Login extends Component {
@@ -22,6 +24,7 @@ export class Login extends Component {
   }
 
   render() {
+    const { login } = this.props;
     const { email, password } = this.state;
     console.log(email);
     console.log(password);
@@ -43,15 +46,17 @@ export class Login extends Component {
             data-testid="password-input"
             onChange={ this.handleChange }
           />
-          <button
-            type="submit"
-            disabled={
-              !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(email)
+          <Link to="/carteira" onClick={ () => login(this.state) }>
+            <button
+              type="submit"
+              disabled={
+                !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(email)
                 || password.length < minPasswordLength
-            }
-          >
-            Entrar
-          </button>
+              }
+            >
+              Entrar
+            </button>
+          </Link>
         </form>
       </main>
     );
@@ -61,5 +66,9 @@ export class Login extends Component {
 const mapDispatchToProps = (dispatch) => ({
   login: (email) => dispatch(userLogin(email)),
 });
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(Login);
