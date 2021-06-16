@@ -46,7 +46,7 @@ export class Login extends Component {
             data-testid="password-input"
             onChange={ this.handleChange }
           />
-          <Link to="/carteira" onClick={ () => login(this.state) }>
+          <Link to="/carteira" onClick={ () => login(email) }>
             <button
               type="submit"
               disabled={
@@ -63,7 +63,7 @@ export class Login extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({ // dispara a action
   login: (email) => dispatch(userLogin(email)),
 });
 
