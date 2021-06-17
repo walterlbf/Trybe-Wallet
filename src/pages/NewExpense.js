@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { deleteItem } from '../actions/index';
+import HeaderList from './HeaderList';
 
 class NewExpense extends Component {
   render() {
-    const { expensesList, toDelete } = this.props;
+    const { list, toDelete } = this.props;
     return (
       <table>
+        <HeaderList />
         <tbody>
-          { expensesList.map((d, idx) => (
+          { list.map((d, idx) => (
             <tr key={ idx }>
               <td role="cell">{ d.description }</td>
               <td role="cell">{ d.tag }</td>
@@ -54,7 +57,7 @@ class NewExpense extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  expensesList: state.wallet.expenses,
+  list: state.wallet.expenses,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -62,7 +65,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 NewExpense.propTypes = {
-  expensesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
   toDelete: PropTypes.func.isRequired,
 };
 

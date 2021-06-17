@@ -81,7 +81,7 @@ export class ExpensesForm extends Component {
         </label>
         <button
           type="button"
-          onClick={ () => { this.addId(); fetchExpense(this.state); } }
+          onClick={ () => { this.setId(); fetchExpense(this.state); } }
         >
           Adicionar despesa
         </button>
