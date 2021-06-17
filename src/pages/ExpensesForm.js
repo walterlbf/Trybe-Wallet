@@ -18,11 +18,11 @@ export class ExpensesForm extends Component {
     this.setId = this.setId.bind(this);
   }
 
-//   componentDidMount() {
-//     const { fetchCurrency } = this.props;
-//     fetchCurrency();
-//     console.log('entrei aqui');
-//   }
+  //   componentDidMount() {
+  //     const { fetchCurrency } = this.props;
+  //     fetchCurrency();
+  //     console.log('entrei aqui');
+  //   }
 
   setId() {
     this.setState((prev) => ({
@@ -38,7 +38,7 @@ export class ExpensesForm extends Component {
   }
 
   render() {
-    const { currencies, fetchExpense } = this.props;
+    const { fetchExpense } = this.props;
     return (
       <form className="form" id="form1">
         <label htmlFor="value">
@@ -99,9 +99,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 ExpensesForm.propTypes = {
-  fetchCurrency: PropTypes.func.isRequired,
+//   fetchCurrency: PropTypes.func.isRequired,
   fetchExpense: PropTypes.func.isRequired,
-  currencies: PropTypes.arrayOf(PropTypes.object).isRequired,
+//   currencies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpensesForm);
