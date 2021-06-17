@@ -1,25 +1,37 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import expensesForm from './ExpensesForm';
+import PropTypes from 'prop-types';
+import HeaderList from './HeaderList';
+import { ExpensesForm } from './ExpensesForm';
+import NewExpense from './NewExpense';
 
-class Wallet extends React.Component {
+class Wallet extends Component {
+  totalChange() {
+    const { expensesTotal } = this.props;
+    const values = expensesTotal.reduce((acc, curr) => {
+      const change = curr.exchangeRates[curr.currency].ask;
+      return (Number(acc) + Number(curr.value * change)).toFixed(2);
+    }, 0);
+    return values;
+  }
+
   render() {
-    const { email, expensesTotal } = this.props;
-    console.log(email);
+    const { email } = this.props;
     return (
       <>
         <header>
-          <span data-testid="email-field">{ email }</span>
+          <span data-testid="email-field">{`Email: ${email}`}</span>
           <span
             data-testid="total-field"
           >
-            {`Total: 
-           ${expensesTotal.reduce((acc, curr) => Number(acc) + Number(curr.value), 0)}` }
+            {`Despesa total: R$ 
+            ${this.totalChange()}`}
           </span>
-          <span data-testid="header-currency-field">BRL</span>
+          <span data-testid="Wallet-currency-field">BRL</span>
         </header>
-        <expensesForm />
+        <HeaderList />
+        <ExpensesForm />
+        <NewExpense />
       </>
     );
   }

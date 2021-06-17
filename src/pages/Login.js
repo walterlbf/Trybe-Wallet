@@ -26,8 +26,6 @@ export class Login extends Component {
   render() {
     const { login } = this.props;
     const { email, password } = this.state;
-    console.log(email);
-    console.log(password);
     const minPasswordLength = 6;
     return (
       <main>
@@ -46,7 +44,7 @@ export class Login extends Component {
             data-testid="password-input"
             onChange={ this.handleChange }
           />
-          <Link to="/carteira" onClick={ () => login(email) }>
+          <Link to="/carteira" onClick={ () => login({ email }) }>
             <button
               type="submit"
               disabled={

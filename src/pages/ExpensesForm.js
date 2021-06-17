@@ -7,6 +7,7 @@ export class ExpensesForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: 0,
       value: '',
       description: '',
       currency: '',
@@ -14,15 +15,19 @@ export class ExpensesForm extends Component {
       tag: '',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.setId = this.setId.bind(this);
   }
 
-  componentDidMount() {
-    const { fetchCurrency } = this.props;
-    fetchCurrency();
-  }
+//   componentDidMount() {
+//     const { fetchCurrency } = this.props;
+//     fetchCurrency();
+//     console.log('entrei aqui');
+//   }
 
-  cleanForm() {
-    document.getElementsByTagName('form1').reset();
+  setId() {
+    this.setState((prev) => ({
+      id: prev.id + 1,
+    }));
   }
 
   handleChange({ target }) {
@@ -42,9 +47,9 @@ export class ExpensesForm extends Component {
         </label>
         <label htmlFor="currency">
           Moeda
-          <select id="currency" name="currency" onChange={ this.handleChange }>
-            { currencies.map((currencie, i) => <option key={ i }>{ currencie.code }</option>)}
-          </select>
+          {/* <select id="currency" name="currency" onChange={ this.handleChange }>
+            { currencies.map((curr, idx) => <option key={ idx }>{ curr.code }</option>)}
+          </select> */}
         </label>
         <label htmlFor="method">
           Método de pagamento
@@ -75,7 +80,7 @@ export class ExpensesForm extends Component {
         </label>
         <button
           type="button"
-          onClick={ () => { this.cleanForm(); fetchExpense(this.state); } }
+          onClick={ () => { this.addId(); fetchExpense(this.state); } }
         >
           Adicionar despesa
         </button>
