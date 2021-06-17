@@ -47,9 +47,9 @@ export class ExpensesForm extends Component {
         </label>
         <label htmlFor="currency">
           Moeda
-          {/* <select id="currency" name="currency" onChange={ this.handleChange }>
-            { currencies.map((curr, idx) => <option key={ idx }>{ curr.code }</option>)}
-          </select> */}
+          <select id="currency" name="currency" onChange={ this.handleChange }>
+            {/* { currencies.map((curr, idx) => <option key={ idx }>{ curr.code }</option>)} */}
+          </select>
         </label>
         <label htmlFor="method">
           Método de pagamento
