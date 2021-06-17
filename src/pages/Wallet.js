@@ -27,7 +27,7 @@ class Wallet extends Component {
             {`Despesa total: R$ 
             ${this.totalChange()}`}
           </span>
-          <span data-testid="Wallet-currency-field">BRL</span>
+          <span data-testid="header-currency-field">BRL</span>
         </header>
         <HeaderList />
         <ExpensesForm />
