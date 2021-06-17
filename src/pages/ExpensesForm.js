@@ -22,6 +22,7 @@ export class ExpensesForm extends Component {
   //     const { fetchCurrency } = this.props;
   //     fetchCurrency();
   //     console.log('entrei aqui');
+  // { currencies.map((curr, idx) => <option key={ idx }>{ curr.code }</option>)}
   //   }
 
   setId() {
@@ -48,7 +49,7 @@ export class ExpensesForm extends Component {
         <label htmlFor="currency">
           Moeda
           <select id="currency" name="currency" onChange={ this.handleChange }>
-            {/* { currencies.map((curr, idx) => <option key={ idx }>{ curr.code }</option>)} */}
+            {}
           </select>
         </label>
         <label htmlFor="method">
