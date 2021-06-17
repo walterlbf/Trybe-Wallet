@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrencies, fetchExpenses } from '../actions/index';
 
-export class ExpensesForm extends Component {
+class ExpensesForm extends Component {
   constructor(props) {
     super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.cleanForm = this.cleanForm.bind(this);
+    this.addId = this.addId.bind(this);
+
     this.state = {
       id: 0,
       value: '',
@@ -14,21 +19,11 @@ export class ExpensesForm extends Component {
       method: '',
       tag: '',
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.setId = this.setId.bind(this);
   }
 
-  //   componentDidMount() {
-  //     const { fetchCurrency } = this.props;
-  //     fetchCurrency();
-  //     console.log('entrei aqui');
-  // { currencies.map((curr, idx) => <option key={ idx }>{ curr.code }</option>)}
-  //   }
-
-  setId() {
-    this.setState((prev) => ({
-      id: prev.id + 1,
-    }));
+  componentDidMount() {
+    const { fetchCurrency } = this.props;
+    fetchCurrency();
   }
 
   handleChange({ target }) {
@@ -38,8 +33,18 @@ export class ExpensesForm extends Component {
     });
   }
 
+  cleanForm() {
+    document.getElementById('form1').reset();
+  }
+
+  addId() {
+    this.setState((prev) => ({
+      id: prev.id + 1,
+    }));
+  }
+
   render() {
-    const { fetchExpense } = this.props;
+    const { currencies, fetchExpense } = this.props;
     return (
       <form className="form" id="form1">
         <label htmlFor="value">
@@ -49,7 +54,7 @@ export class ExpensesForm extends Component {
         <label htmlFor="currency">
           Moeda
           <select id="currency" name="currency" onChange={ this.handleChange }>
-            {}
+            {currencies.map((curr, idx) => <option key={ idx }>{ curr.code }</option>)}
           </select>
         </label>
         <label htmlFor="method">
@@ -81,7 +86,7 @@ export class ExpensesForm extends Component {
         </label>
         <button
           type="button"
-          onClick={ () => { this.setId(); fetchExpense(this.state); } }
+          onClick={ () => { this.cleanForm(); this.addId(); fetchExpense(this.state); } }
         >
           Adicionar despesa
         </button>
@@ -100,9 +105,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 ExpensesForm.propTypes = {
-//   fetchCurrency: PropTypes.func.isRequired,
+  fetchCurrency: PropTypes.func.isRequired,
   fetchExpense: PropTypes.func.isRequired,
-//   currencies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currencies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpensesForm);
