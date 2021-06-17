@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import HeaderList from './HeaderList';
 import { ExpensesForm } from './ExpensesForm';
 import NewExpense from './NewExpense';
 
@@ -29,7 +28,6 @@ class Wallet extends Component {
           </span>
           <span data-testid="header-currency-field">BRL</span>
         </header>
-        <HeaderList />
         <ExpensesForm />
         <NewExpense />
       </>
