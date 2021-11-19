@@ -55,19 +55,19 @@ function receiveCurrency(currencies) {
 }
 
 export function fetchCurrencies() {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(requestCurrency());
-    return fetch('https://economia.awesomeapi.com.br/json/all')
-      .then((response) => response.json())
-      .then((currencies) => dispatch(receiveCurrency(currencies)));
+    const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+    const currencies = await response.json();
+    return dispatch(receiveCurrency(currencies));
   };
 }
 
 export function fetchExpenses(payload) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(requestCurrency());
-    return fetch('https://economia.awesomeapi.com.br/json/all')
-      .then((response) => response.json())
-      .then((rate) => dispatch(userExpenses({ ...payload, exchangeRates: rate })));
+    const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+    const rate = await response.json();
+    return dispatch(userExpenses({ ...payload, exchangeRates: rate }));
   };
 }

@@ -3,6 +3,19 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrencies, fetchExpenses } from '../actions/index';
 
+const tags = [
+  'Alimentação',
+  'Lazer', 'Trabalho',
+  'Transporte',
+  'Saúde',
+];
+
+const paymentMethod = [
+  'Dinheiro',
+  'Cartão de crédito',
+  'Cartão de débito',
+];
+
 class ExpensesForm extends Component {
   constructor(props) {
     super(props);
@@ -13,11 +26,11 @@ class ExpensesForm extends Component {
 
     this.state = {
       id: 0,
-      value: '',
+      value: '0',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Aliementação',
       description: '',
-      currency: '',
-      method: '',
-      tag: '',
     };
   }
 
@@ -54,25 +67,25 @@ class ExpensesForm extends Component {
         <label htmlFor="currency">
           Moeda
           <select id="currency" name="currency" onChange={ this.handleChange }>
-            {currencies.map((curr, idx) => <option key={ idx }>{ curr.code }</option>)}
+            {currencies.map((curr, index) => (
+              <option key={ index }>{ curr.code }</option>
+            ))}
           </select>
         </label>
         <label htmlFor="method">
           Método de pagamento
           <select id="method" name="method" onChange={ this.handleChange }>
-            <option>Dinheiro</option>
-            <option>Cartão de crédito</option>
-            <option>Cartão de débito</option>
+            {paymentMethod.map((option, index) => (
+              <option key={ index }>{option}</option>
+            )) }
           </select>
         </label>
         <label htmlFor="tag">
-          Tag
+          Tag:
           <select id="tag" name="tag" onChange={ this.handleChange }>
-            <option>Alimentação</option>
-            <option>Lazer</option>
-            <option>Trabalho</option>
-            <option>Transporte</option>
-            <option>Saúde</option>
+            {tags.map((option, index) => (
+              <option key={ index }>{option}</option>
+            )) }
           </select>
         </label>
         <label htmlFor="description">
