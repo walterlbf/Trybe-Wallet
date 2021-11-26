@@ -1,14 +1,14 @@
-# Shopping List App
+# Trybe-Wallet
 
 ## Description
 
-A Shopping List App using Redux to manage states and consuming a mock api.
+Expense control portfolio with currency converter using Redux to manage states.
 
 ## Install and Run
 
 - Open terminal
-- Clone this repository with `git clone https://github.com/walterlbf/crud-app.git`
-- $ cd ./crud-app
+- Clone this repository with `git clone https://github.com/walterlbf/Trybe-Wallet.git`
+- $ cd ./Trybe-Wallet
 - Install dependencies using `npm install`
 - Run project in production `npm start`
 
