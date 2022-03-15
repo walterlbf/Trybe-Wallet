@@ -1,8 +1,13 @@
-# Trybe-Wallet
+# Carteira Online
 
 ## Description
 
-Expense control portfolio with currency converter using Redux to manage states.
+Uma carteira online para controle de gastos.
+
+##Layout
+
+Criei esse prototipo no figma para o projeto:
+https://www.figma.com/file/04C6rEkfoCqxHOWsVsxSVR/Carteira-Online?node-id=6%3A2
 
 ## Install and Run
 
@@ -19,7 +24,9 @@ Expense control portfolio with currency converter using Redux to manage states.
 - JavaScript
 - CSS
 - HTML
+- Figma
 
 ## Comments
 
 - Missing update state
+- Aplicar estilos do prototipo
