@@ -4,7 +4,7 @@
 
 Uma carteira online para controle de gastos.
 
-##Layout
+## Layout
 
 Criei esse prototipo no figma para o projeto:
 https://www.figma.com/file/04C6rEkfoCqxHOWsVsxSVR/Carteira-Online?node-id=6%3A2
